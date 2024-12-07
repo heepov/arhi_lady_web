@@ -1,0 +1,310 @@
+:root {
+    --primary-color: #ff6b6b;
+    --text-color: #333;
+    --background-color: #fff;
+    --card-background: #f8f9fa;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Grid Layout */
+.grid-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-left: 20px;
+    color: var(--text-color);
+    grid-column: span 2;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 0 20px 40px;
+}
+
+/* Base Card Styles */
+.card {
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    padding: 20px;
+}
+
+.card a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 15px;
+    height: 100%;
+}
+
+/* Card Variants */
+.card-square {
+    aspect-ratio: 1/1;
+    grid-column: span 1;
+}
+
+.card-square .info {
+    text-align: center;
+}
+.card-square a {
+    justify-content: center;
+}
+.card-horizontal {
+    
+    aspect-ratio: 2/1;
+    grid-column: span 2;
+}
+
+.card-horizontal a {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card-horizontal .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+
+.card-horizontal .info {
+    text-align: left;
+}
+
+.card-horizontal .image {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.card-vertical {
+    grid-row: span 2;
+    aspect-ratio: 1/2;
+}
+
+.card-vertical a {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+
+.card-vertical .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-vertical .icon {
+    margin-bottom: 15px;
+    justify-self: center;
+}
+
+.card-vertical .info {
+    text-align: center;
+}
+
+.card-vertical .image {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+/* Common Components */
+.icon {
+    background: var(--background-color);
+    padding: 8px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.info h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+.info p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Стили для экранов до 1260px */
+@media (max-width: 1260px) {
+    .cards-grid {
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(100% - 40px);
+    }
+    .card {
+        padding: 15px;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .icon img {
+        width: 35px;
+        height: 35px;
+    }
+
+}
+
+.profile-section {
+    text-align: start;
+    padding: 40px 20px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.profile-section h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 16px;
+}
+
+.profile-section .description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* Для мобильных устройств */
+@media (max-width: 1260px) {
+    .profile-section {
+        padding: 30px 20px;
+    }
+
+    .logo {
+        width: 180px;
+        height: 180px;
+    }
+
+    .profile-section h1 {
+        font-size: 1.75rem;
+    }
+}
+
+
+/* Стили для экранов больше 1260px */
+@media (min-width: 1261px) {
+    body {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 420px 1fr 1fr;
+        gap: 40px;
+        padding: 40px;
+        justify-content: end;
+    }
+
+    .profile-section {
+        position: sticky;
+        top: 40px;
+        align-self: start;
+        grid-column: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cards-grid {
+        max-width: 420px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+    }
+    .image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .logo {
+        margin: 0 0 20px 0;
+    }
+
+    .profile-section {
+        text-align: start;
+    }
+
+    .contact-section {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+    }
+    .portfolio-section {
+        grid-column: 3;
+        grid-row: 1;
+        justify-self: end;
+    }
+    .learning-section {
+        grid-column: 3;
+        grid-row: 2;
+        justify-self: end;
+    }
+}
