@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  arhi-lady:
+    image: nginx:alpine
+    container_name: arhi-lady
+    volumes:
+      - /data/projects/arhi-lady.ru:/usr/share/nginx/html:ro
+    networks:
+      - infra
+    restart: unless-stopped
+
+networks:
+  infra:
+    external: true
